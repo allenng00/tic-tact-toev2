@@ -19,6 +19,7 @@ function winLines(size) {
 function calculateWinner(squares, step) {
 	const lines = winLines(BOARD_SIZE);
 	let winLine = []
+	console.log(step)
 	for (let i = 0; i < lines.length; i++) {
 		const [a, b, c] = lines[i];
 		if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
@@ -26,9 +27,11 @@ function calculateWinner(squares, step) {
 			return { state: "win", line: winLine }
 		}
 	}
+	// Draw case
 	if (step === BOARD_SIZE * BOARD_SIZE) {
 		return { state: "draw" }
 	}
+
 	return { state: null };
 }
 
@@ -79,7 +82,7 @@ export class Game extends React.Component {
 			moveSelecting: history.length
 		});
 	}
-
+	// Handle button click
 	jumpTo(step) {
 		this.setState({
 			stepNumber: step,
@@ -100,10 +103,12 @@ export class Game extends React.Component {
 
 	render() {
 		const history = this.state.history;
-		const current = history[this.state.stepNumber];
-		const winner = calculateWinner(current.squares, history.length - 1);
+		const step = this.state.stepNumber
+		const current = history[step];
+		const winner = calculateWinner(current.squares, step - 1);
 		const reverse = this.state.reverseHistory;
-		const step = 'Current move: ' + this.state.moveSelecting;
+
+		const stepInfor = 'Current move: ' + this.state.moveSelecting;
 		let status;
 
 		switch (winner.state) {
@@ -165,7 +170,7 @@ export class Game extends React.Component {
 
 					<div className="game-info">
 						<ol className="game-info__status">{status}</ol>
-						<ol>{step}</ol>
+						<ol>{stepInfor}</ol>
 						<ol>{moves}</ol>
 					</div>
 				</div>
