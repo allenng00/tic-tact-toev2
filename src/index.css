@@ -1,13 +1,146 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	margin: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ol,
+ul {
+	padding-left: 30px;
+}
+
+.board-row:after {
+	clear: both;
+	content: "";
+	display: table;
+}
+
+.status {
+	margin-bottom: 10px;
+}
+
+.square,
+.win-square {
+	background: #fff;
+	border: 1px solid #999;
+	float: left;
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 34px;
+	height: 34px;
+	margin-right: -1px;
+	margin-top: -1px;
+	padding: 0;
+	text-align: center;
+	width: 34px;
+}
+
+.square:focus,
+.win-square:focus {
+	outline: none;
+}
+
+.win-square {
+	background: yellow;
+	color: red;
+}
+
+.kbd-navigation .square:focus {
+	background: #ddd;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+}
+
+.game-settings {
+	/* width: fit-content; */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+	border: #999 1px;
+}
+.game-settings__detail .settings {
+	display: flex;
+	flex-direction: row;
+}
+
+.game-play {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.game-info {
+	margin-left: 20px;
+}
+
+button.selected {
+	font-weight: bold;
+	opacity: 1;
+}
+button.unselected {
+	opacity: 0.6;
+}
+
+.game-info__status {
+	color: blue;
+	font-weight: bolder;
+	font-size: 16px;
+}
+
+.settings {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	height: 24px;
+	outline: none;
+}
+.switch input {
+	position: absolute;
+	top: -99999px;
+	left: -99999px;
+}
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 24px;
+}
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 24px;
+	width: 24px;
+	left: 0px;
+	bottom: 0px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+input:checked + .slider {
+	background-color: lightgreen;
+}
+input:focus + .slider {
+	box-shadow: 0 0 1px rgb(33, 150, 243);
+}
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
 }
