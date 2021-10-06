@@ -1,15 +1,24 @@
 import React from 'react';
-
-export const Settings = (props) => {
+import SizeDropdown from './SizeDropdown';
+export const Settings = ({ onToggle, onValueChange }) => {
 	return (
+		<>
+			<div className="setting">
+				<div>Reverse History</div>
 
-		<div className="settings">
-			<div>Reverse History</div>
+				<label className="switch">
+					<input type="checkbox" value={false} onChange={onToggle} />
+					<div className="slider"></div>
+				</label>
 
-			<label className="switch">
-				<input type="checkbox" value={false} onChange={props.onChange} />
-				<div className="slider"></div>
-			</label>
-		</div>
+
+			</div>
+			<div className="setting">
+
+				<div>Select Board size</div>
+				<SizeDropdown onValueChange={onValueChange} />
+			</div>
+		</>
+
 	)
 }

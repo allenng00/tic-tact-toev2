@@ -51,16 +51,21 @@ ul {
 .game {
 	display: flex;
 	flex-direction: column;
-	width: 500px;
+	/* width: 500px; */
 }
 
 .game-settings {
-	/* width: fit-content; */
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	flex-direction: row;
-	border: #999 1px;
+}
+
+.game-settings > * {
+	margin: 10px;
+}
+
+.game-settings__detail {
+	margin-left: 50px;
 }
 .game-settings__detail .settings {
 	display: flex;
@@ -70,7 +75,12 @@ ul {
 .game-play {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	/* justify-content: space-between; */
+	overflow-x: scroll;
+}
+
+.game-play > * {
+	margin: 10px;
 }
 
 .game-info {
@@ -91,7 +101,7 @@ button.unselected {
 	font-size: 16px;
 }
 
-.settings {
+.setting {
 	display: flex;
 	flex-direction: column;
 	align-items: center;

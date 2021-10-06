@@ -1,15 +1,8 @@
-export function Square(props) {
-	const state = props.state;
-	let classes = "square"
-
+export const Square = ({ value, winState, onClick }) => {
 	//Feature 5. When someone wins, highlight the three squares that caused the win.
-	if (state) {
-		classes = "win-square"
-	}
-
 	return (
-		<button className={classes} onClick={props.onClick}>
-			{props.value}
+		<button className={winState ? "win-square" : "square"} onClick={onClick}>
+			{value}
 		</button>
 	);
 }
