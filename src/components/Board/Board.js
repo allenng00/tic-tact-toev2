@@ -1,6 +1,6 @@
 import React from 'react';
-import { BOARD_SIZE } from '../constants';
-import { Square } from './Square'
+import { BOARD_SIZE } from '../../constants';
+import { Square } from '../Square/Square'
 import './Board.css'
 export const Board = ({ squares, size = BOARD_SIZE, winLine, onClick }) => {
 

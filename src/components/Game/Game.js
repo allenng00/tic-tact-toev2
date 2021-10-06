@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Board } from './Board'
-import { Settings } from './Settings';
-import { calculateWinner } from '../features/winnerCalculate';
-import { BOARD_SIZE } from '../constants';
+import { Board } from '../Board/Board'
+import { Settings } from '../Settings/Settings';
+import { calculateWinner } from '../../features/winnerCalculate';
+import { BOARD_SIZE } from '../../constants';
 import './Game.css';
 
 const Game = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import SizeDropdown from './SizeDropdown';
+import SizeDropdown from '../SizeDropdown/SizeDropdown';
 import './Settings.css'
 export const Settings = ({ onToggle, onValueChange }) => {
 	return (

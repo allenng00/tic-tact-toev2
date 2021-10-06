@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SIZE_RANGE } from '../constants';
+import { SIZE_RANGE } from '../../constants';
 
 const SizeDropdown = ({ onValueChange }) => {
 
@@ -14,7 +14,7 @@ const SizeDropdown = ({ onValueChange }) => {
 	const [value, setValue] = useState(range[0]);
 
 	return (
-		<div className="dropdown">
+		<div className="size-dropdown">
 
 			<select value={value} className="board-sizes" onChange={onChange}>
 				{range.map(ele => (
