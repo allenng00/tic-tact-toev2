@@ -1,0 +1,71 @@
+ol,
+ul {
+	padding-left: 30px;
+}
+
+.status {
+	margin-bottom: 10px;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	/* width: 500px; */
+}
+
+.game-settings {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-left: 40px;
+}
+
+.game-settings > * {
+	margin: 10px;
+}
+
+.game-settings__detail {
+	margin-left: 50px;
+}
+.game-settings__detail .settings {
+	display: flex;
+	flex-direction: row;
+}
+
+.game-play {
+	display: flex;
+	flex-direction: row;
+	/* justify-content: space-between; */
+}
+
+.game-play > * {
+	margin: 20px;
+}
+
+.game-info {
+	margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.game-infor__moves button.selected {
+	font-weight: bold;
+	opacity: 1;
+}
+.game-infor__moves button.unselected {
+	opacity: 0.6;
+}
+
+.game-info__status {
+	color: blue;
+	font-weight: bolder;
+	font-size: 16px;
+}
+.game-infor__replay {
+	margin-left: 20px;
+}
+
+.game-board {
+	margin-top: 80px;
+}

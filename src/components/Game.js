@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Board } from './Board'
 import { Settings } from './Settings';
-import { calculateWinner2 } from '../features/winnerCalculate';
+import { calculateWinner } from '../features/winnerCalculate';
 import { BOARD_SIZE } from '../constants';
-import '../index.css';
+import './Game.css';
 
 const Game = () => {
 
@@ -23,6 +23,9 @@ const Game = () => {
 	const [enableClick, setEnableClick] = useState(true)
 
 	const handleClick = (i) => {
+		if (enableClick === false) {
+			return;
+		}
 		const currentHistory = history.slice(0, stepNumber + 1);
 		const current = currentHistory[currentHistory.length - 1];
 		const squares = current.squares.slice();
@@ -31,12 +34,7 @@ const Game = () => {
 		if (squares[i]) {
 			return;
 		}
-
 		squares[i] = xIsNext ? "X" : "O";
-		// const state = calculateWinner2(squares, BOARD_SIZE, history.length - 1, currentPosition).state
-		// if (state) {
-		// 	return;
-		// }
 		setHistory(
 			history.concat([
 				{
@@ -53,6 +51,7 @@ const Game = () => {
 	}
 	// Handle button click
 	const jumpTo = (step) => {
+
 		setStepNumber(step);
 		setXIsNext(step % 2 === 0);
 		setMoveSelecting(step)
@@ -89,12 +88,11 @@ const Game = () => {
 
 	const step = stepNumber
 	const current = history[step];
-	const winner = calculateWinner2(current.squares, boardSize, step - 1, current.lastPosition);
-	const reverse = reverseHistory;
+	const winner = calculateWinner(current.squares, boardSize, step);
 
 	const stepInfor = 'Current move: ' + moveSelecting;
 	let status;
-	// console.log(winner.state)
+
 	switch (winner.state) {
 		case "win":
 			status = "Winner: " + current.squares[winner.line[0]];
@@ -107,9 +105,12 @@ const Game = () => {
 			status = "Next player: " + (xIsNext ? "X" : "O");
 			break;
 		default:
-
 			break;
 	}
+
+	// if (winner.state === "win") {
+	// 	stopGame()
+	// }
 
 	let moves = history.map((h, move) => {
 		// Feature 1. Display the location for each move in the format(col, row) in the move history list.
@@ -129,10 +130,6 @@ const Game = () => {
 		);
 	});
 
-	if (reverse) {
-		moves = moves.reverse();
-	}
-
 	return (
 		<div className="game">
 			<div className="game-settings">
@@ -143,12 +140,12 @@ const Game = () => {
 			</div>
 
 			<div className="game-play">
-
 				<div className="game-info">
 					<h1>Game Play</h1>
 					<ol className="game-info__status">{status}</ol>
 					<ol>{stepInfor}</ol>
-					<ol>{moves}</ol>
+					<button className="game-infor__replay" onClick={() => replay(boardSize)}>New Game</button>
+					<ol className="game-infor__moves">{reverseHistory ? moves.reverse() : moves}</ol>
 				</div>
 
 				<div className="game-board">

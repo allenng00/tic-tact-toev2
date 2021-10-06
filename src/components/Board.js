@@ -1,17 +1,8 @@
 import React from 'react';
 import { BOARD_SIZE } from '../constants';
-
 import { Square } from './Square'
-
+import './Board.css'
 export const Board = ({ squares, size = BOARD_SIZE, winLine, onClick }) => {
-
-	const winStates = Array(size * size).fill(false);
-
-	if (winLine) {
-		winLine.forEach(e => {
-			winStates[e] = true;
-		});
-	}
 
 	return (
 		<div>
@@ -21,6 +12,14 @@ export const Board = ({ squares, size = BOARD_SIZE, winLine, onClick }) => {
 
 }
 
+/**
+ * Render Square
+ * @param {value of square} value 
+ * @param {index of square} index 
+ * @param {state of square} winState 
+ * @param {onClickHandler function} onClick 
+ * @returns A square
+ */
 const renderSquare = (value, index, winState, onClick) => {
 	return (
 		<Square
@@ -33,6 +32,15 @@ const renderSquare = (value, index, winState, onClick) => {
 }
 
 // Feature 3. Rewrite Board to use two loops to make the squares instead of hard-coding them.
+
+/**
+ * Render Board
+ * @param {size of Board} size 
+ * @param {values of Board} squares 
+ * @param {Current Win line} winLine 
+ * @param {onClick function} onClick 
+ * @returns 
+ */
 const prepareBoard = (size, squares, winLine, onClick) => {
 	let s = size * size
 	let rows = []
@@ -52,6 +60,15 @@ const prepareBoard = (size, squares, winLine, onClick) => {
 	return rows;
 }
 
+/**
+ * Render Row
+ * @param {size of Row} size 
+ * @param {start index} startIndex 
+ * @param {values of Row} values 
+ * @param {stated of Row} winStates 
+ * @param {onClick function} onClick 
+ * @returns 
+ */
 const renderRow = (size, startIndex, values, winStates, onClick) => {
 	const row = [...Array(size).keys()]
 
